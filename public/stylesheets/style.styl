@@ -1,0 +1,345 @@
+@import 'nib'
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:400')
+
+/* Colors */
+base = #aaa
+common = #fff
+rare = #0070dd
+epic = #a335ee
+legendary = #ff8000
+
+/* Keyframes */
+@keyframes rotateIn
+  from
+    transform: perspective(1000px) rotateX(90deg)
+  to
+    transform: perspective(1000px) rotateX(0deg)
+@keyframes fadeInRotateInY
+  from
+    opacity: 0
+    transform: perspective(1000px) rotateY(90deg)
+  to
+    opacity: 1
+    transform: perspective(1000px) rotateY(0deg)
+
+/* General */
+html
+  height: 100%
+body
+  background: black
+  color: rgba(255,255,255,0.85)
+  display: flex
+  flex-direction: column
+  font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif
+  font-size: 13px
+  height: 100%
+  margin: 0
+  user-select: none
+a
+  color: #00B7FF
+input
+  font-family: inherit
+  font-size: inherit
+img.loading
+  visibility: hidden
+img.loaded
+  animation: fadeInRotateInY 1s
+  visibility: visible
+
+/* Heroes */
+#heroes
+  display: flex
+  flex: 1 1 auto
+  flex-direction: column
+  justify-content: center
+  overflow: auto
+  &::-webkit-scrollbar
+    background: rgba(255,255,255,0.15)
+    width: 10px
+  &::-webkit-scrollbar-thumb
+    background: rgba(255,255,255,0.15)
+    border: 1px solid rgba(255,255,255,0.15)
+  ul
+    display: flex
+    flex-wrap: wrap
+    list-style-type: none
+    margin: 0 auto
+    padding: 0
+    width: 660px
+  li
+    flex: 0 0 auto
+    margin: 10px
+    opacity: 0.8
+    transition: all 0.2s
+    &:hover
+      opacity: 1
+      transform: scale(1.03)
+    &:active
+      transform: scale(0.97)
+  img
+    display: block
+
+/* Header */
+#header
+  border-bottom: 1px solid rgba(255,255,255,0.15)
+  display: flex
+  flex: 0 0 auto
+  flex-wrap: wrap
+  line-height: 40px
+h1
+  flex: 0 0 auto
+  font-size: 1em
+  font-weight: normal
+  letter-spacing: 1px
+  margin: 0
+  padding: 0
+  text-transform: uppercase
+  a
+    color: inherit
+    display: block
+    padding: 0 10px
+    text-decoration: none
+  a:hover
+    background: rgba(255,255,255,0.15)
+    color: white
+  a.active:hover
+    background: none
+    color: inherit
+h1.centered
+  flex: 1 1 auto
+  text-align: center
+#stats
+  flex: 1 0 auto
+  text-align: right
+  dl
+    margin: 0
+  dt
+    display: inline
+    margin-left: 10px
+    &:after
+      content: ': '
+  dd
+    display: inline
+    margin: 0
+    margin-right: 10px
+#filters
+  display: flex
+  flex: 0 0 auto
+  input
+    display: block
+  input[type=radio]
+    display: none
+  input[type=radio]:checked + label
+    box-shadow: inset 0 -4px legendary
+  label
+    display: block
+    letter-spacing: 1px
+    margin: 0
+    padding: 0 10px
+    text-transform: uppercase
+  label:hover
+    background: rgba(255,255,255,0.15)
+    color: white
+#controls
+  display: flex
+  flex: 0 0 auto
+  justify-content: flex-end
+  input[type=checkbox]
+    display: none
+  input[type=checkbox]:checked + label
+    text-decoration: none
+  input[type=checkbox]:checked + label:hover
+    color: white
+  input[type=text]
+    border: none
+    display: block
+    margin: 7px 10px
+    padding: 0 5px
+  label
+    display: block
+    letter-spacing: 1px
+    margin: 0 2px
+    padding: 0 8px
+    text-decoration: line-through
+    text-transform: uppercase
+  label:hover
+    background: rgba(255,255,255,0.15)
+    color: white
+
+/* Main */
+#main
+  display: flex
+  flex: 1 1 auto
+  flex-direction: column
+
+/* View */
+#view
+  display: flex
+  flex: 1 1 auto
+
+/* Cards View */
+#cards
+  flex: 1 1 auto
+  overflow: auto
+  overflow-y: scroll
+  &::-webkit-scrollbar
+    background: rgba(255,255,255,0.15)
+    width: 10px
+  &::-webkit-scrollbar-thumb
+    background: rgba(255,255,255,0.15)
+    border: 1px solid rgba(255,255,255,0.15)
+  img
+    display: block
+    pointer-events: none
+  li
+    display: block
+    margin: 0
+    padding: 0
+    position: relative
+    transition: opacity 0.2s
+  li:hover:before
+    bottom: 0
+    box-shadow: 0 0 12px 6px white
+    content: ''
+    left: 0
+    margin: 20px
+    margin-bottom: 23px
+    margin-top: 53px
+    position: absolute
+    right: 0
+    top: 0
+    z-index: -1
+  li:active
+    transform: scale(0.98)
+  li.not-available
+    cursor: default
+    opacity: 0.5
+  li.not-available:active
+    transform: none
+  ul
+    display: flex
+    flex-wrap: wrap
+    list-style-type: none
+    margin: 0
+    padding: 0
+
+/* Deck View */
+#deck
+  display: flex
+  flex: 0 0 auto
+  flex-direction: column
+  width: 240px
+  ul
+    flex: 1 1 auto
+    list-style-type: none
+    margin: 0
+    overflow: hidden
+    overflow-y: auto
+    padding: 0
+    &::-webkit-scrollbar
+      background: rgba(255,255,255,0.15)
+      width: 10px
+    &::-webkit-scrollbar-thumb
+      background: rgba(255,255,255,0.15)
+      border: 1px solid rgba(255,255,255,0.15)
+  li
+    animation: rotateIn 1s
+    background: #111
+    box-shadow: 0 0 0 1px black
+    box-sizing: border-box
+    color: base
+    display: block
+    line-height: 30px
+    margin: 0
+    position: relative
+    &.common
+      color: common
+    &.rare
+      color: rare
+    &.epic
+      color: epic
+    &.legendary
+      color: legendary
+    &:hover:after
+      background: rgba(255,255,255,0.1)
+      content: ''
+      height: 100%
+      left: 0
+      position: absolute
+      top: 0
+      width: 100%
+  .image
+    background-position: 50% 25%
+    box-sizing: border-box
+    position: absolute
+    left: 50%
+    height: 100%
+    top: 0
+    width: 50%
+    &:after
+      background-image: linear-gradient(90deg, #111, transparent)
+      content: ''
+      height: 100%
+      left: 0
+      position: absolute
+      top: 0
+      width: 100%
+  .content
+    display: flex
+    position: relative
+  .mana
+    background: #15a
+    box-sizing: border-box
+    color: white
+    flex: 0 0 auto
+    text-align: center
+    width: 30px
+  .name
+    flex: 1 1 auto
+    overflow: hidden
+    padding: 0 10px
+    text-overflow: ellipsis
+    white-space: nowrap
+  .count
+    background: #333
+    box-sizing: border-box
+    color: gold
+    flex: 0 0 auto
+    min-width: 30px
+    padding: 0 10px
+    text-align: center
+#mana-curve
+  border-top: 1px solid rgba(255,255,255,0.15)
+  display: flex
+  flex: 0 0 auto
+  height: 60px
+  margin: 0
+  padding: 5px 10px 5px 9px
+  > div
+    flex: 1 1 auto
+    position: relative
+  .bar
+    background: #f90
+    bottom: 0
+    border-left: 1px solid black
+    box-sizing: border-box
+    position: absolute
+    left: 0
+    transition: height 0.4s
+    width: 100%
+
+/* Footer */
+#footer
+  border-top: 1px solid rgba(255,255,255,0.15)
+  color: rgba(255,255,255,0.5)
+  flex: 0 0 auto
+  font-size: 11px
+  line-height: 40px
+  text-align: center
+  a
+    color: rgba(255,255,255,0.65)
+    text-decoration: none
+  a:hover
+    text-decoration: underline
+  p
+    margin: 0

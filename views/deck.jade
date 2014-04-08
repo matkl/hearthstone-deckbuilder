@@ -1,0 +1,46 @@
+extends layout
+
+block head
+  script(src='/javascripts/knockout-3.1.0.js')
+  script(src='/javascripts/deckbuilder.js')
+
+block content
+  header#header
+    h1
+      a(href='/decks') Hearthstone Deck Builder
+        |  
+        span(style='background: red; color: white; padding: 0 2px;') Beta
+    section#filters
+      input#class-filter(data-bind='checked: className', name='className', type='radio', value=className)
+      label(for='class-filter', tabindex=0)= capitalizedClassName
+      input#neutral-filter(data-bind='checked: className', name='className', type='radio', value='neutral')
+      label(for='neutral-filter', tabindex=0) Neutral
+    section#stats
+      dl
+        dt Dust Cost
+        dd(data-bind='text: cost')
+        dt Cards
+        dd
+          span(data-bind='text: size')
+          |  / 30
+    section#controls
+      input#arena-filter(data-bind='checked: arena', name='arena', type='checkbox')
+      label(for='arena-filter') Arena Deck
+      input#search(data-bind='value: search, valueUpdate: "input"', placeholder='Search', type='text')
+  main#main
+    div#view
+      section#cards
+        ul(data-bind='foreach: filteredCards')
+          li(data-bind='click: $parent.selectCard.bind($parent), css: { "not-available": !available() }')
+            img(data-bind='attr: { alt: name, src: image }', height='303', width='200')
+      section#deck
+        ul(data-bind='foreach: selectedCards')
+          li(data-bind='click: $parent.unselectCard.bind($parent), css: { common: quality == "common", rare: quality == "rare", epic: quality == "epic", legendary: quality == "legendary" }')
+            div.image(data-bind='style: { "backgroundImage": "url(" + image + ")" }')
+            div.content
+              div.mana(data-bind='text: mana')
+              div.name(data-bind='text: name')
+              div.count(data-bind='text: count, visible: count() > 1')
+        figure#mana-curve(data-bind='foreach: manaCosts')
+          div
+            div.bar(data-bind='style: { height: count() * $parent.manaCostsScale() + "%" }')

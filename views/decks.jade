@@ -1,0 +1,31 @@
+extends layout
+
+block head
+  script.
+    window.addEventListener('DOMContentLoaded', function(event) {
+      var images = document.getElementsByTagName('img');
+      for (var i = 0; i < images.length; i++) {
+        images[i].className = 'loading';
+        images[i].addEventListener('load', function(event) {
+          this.className = 'loaded';
+        });
+      }
+    });
+
+block content
+  header#header
+    h1.centered
+      a.active Hearthstone Deck Builder
+        |  
+        span(style='background: red; color: white; padding: 0 2px;') Beta
+  section#heroes
+    ul
+      each hero in classes
+        li
+          a(href='/decks/' + hero.className)
+            img(height='200', src=hero.image, width='200')
+  footer#footer
+    p
+      | Hearthstone Deck Builder is a project by 
+      a(href='http://matthiasklein.me') Matthias Klein
+      | .
