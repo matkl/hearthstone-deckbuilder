@@ -13,7 +13,7 @@ var app = express();
 // Use local images if available.
 hearthstone.cards.forEach(function(card) {
   fs.exists(path.join(__dirname, 'local/public/images/cards', card.id + '.png'), function(exists) {
-    if (exists) card.image = '/images/' + card.id + '.png';
+    if (exists) card.image = '/images/cards/' + card.id + '.png';
   });
 });
 
