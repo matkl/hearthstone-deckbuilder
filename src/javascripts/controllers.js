@@ -120,6 +120,7 @@ angular.module('app.controllers', [])
         legendary: 1600
       };
 
+      $scope.dustCost = 0;
       $scope.deck.forEach(function(entry) {
         var card = entry.card;
         var count = entry.count;
