@@ -1,0 +1,14 @@
+doctype
+html(ng-app='app')
+  head
+    link(rel='stylesheet', type='text/css', href='stylesheets/style.css')
+    link(href='http://fonts.googleapis.com/css?family=Open+Sans:200,300,400,600,700,900', rel='stylesheet', type='text/css')
+    script(src='http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.js')
+    script(src='http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.js')
+    script(src='javascripts/controllers.js')
+    script(src='javascripts/services.js')
+    script(src='javascripts/filters.js')
+    script(src='javascripts/directives.js')
+    script(src='javascripts/app.js')
+  body
+    div#deckbuilder(ng-view)

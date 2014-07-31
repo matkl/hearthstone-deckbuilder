@@ -1,0 +1,308 @@
+@import 'nib'
+
+body
+  margin: 0
+
+/* Colors */
+base = #aaa
+common = #fff
+rare = #0070dd
+epic = #a335ee
+legendary = #ff8000
+
+/* Keyframes */
+@keyframes rotateIn
+  from
+    transform: perspective(1000px) rotateX(90deg)
+  to
+    transform: perspective(1000px) rotateX(0deg)
+@keyframes fadeInRotateInY
+  from
+    opacity: 0
+    transform: perspective(1000px) rotateY(90deg)
+  to
+    opacity: 1
+    transform: perspective(1000px) rotateY(0deg)
+
+/* Deck Builder */
+#deckbuilder
+  background: black
+  color: rgba(255,255,255,0.85)
+  display: flex
+  flex-direction: column
+  font-family: 'Source Sans Pro', 'Open Sans', 'Helvetica', 'Arial', sans-serif
+  font-size: 13px
+  height: 100%
+  margin: 0
+  width: 100%
+  user-select: none
+  position: absolute
+  *::-webkit-scrollbar
+    background: rgba(255,255,255,0.15)
+    height: 10px
+    width: 10px
+  *::-webkit-scrollbar-thumb
+    background: rgba(255,255,255,0.15)
+    border: 1px solid rgba(255,255,255,0.15)
+  a
+    color: #00B7FF
+  input
+    font-family: inherit
+    font-size: inherit
+  .gradient-free
+  .gradient-common
+    background: radial-gradient(rgba(common, 0.2), transparent)
+  .gradient-rare
+    background: radial-gradient(rgba(rare, 0.2), transparent)
+  .gradient-epic
+    background: radial-gradient(rgba(epic, 0.2), transparent)
+  .gradient-legendary
+    background: radial-gradient(rgba(legendary, 0.2), transparent)
+  .header
+    border-bottom: 1px solid rgba(255,255,255,0.15)
+    display: flex
+    flex: 0 0 auto
+    flex-wrap: wrap
+    justify-content: space-between
+    line-height: 40px
+    padding: 0 2em
+    a
+      color: inherit
+      text-decoration: none
+      &:hover
+        color: white
+    h1
+      font-size: 1em
+      letter-spacing: 1px
+      margin: 0
+      text-transform: uppercase
+    p
+      margin: 0
+    input
+      margin: 0 0 0 1em
+      vertical-align: middle
+    span
+      margin: 0 0 0 1em
+    label
+      margin: 0 0 0 0.25em
+    .author
+      color: dimgray
+  .content
+    flex: 1 1 auto
+    overflow: auto
+  .builder
+    display: flex
+  .heroes
+    display: flex
+    flex-direction: column
+    justify-content: center
+    margin: 2em auto 0 auto
+    text-align: center
+    width: 660px
+    ul
+      display: flex
+      flex-wrap: wrap
+      list-style-type: none
+      margin: 0 auto
+      padding: 0
+    li
+      cursor: pointer
+      flex: 0 0 auto
+      margin: 10px
+      opacity: 0.8
+      overflow: hidden
+      position: relative
+      transition: all 0.2s
+      &:hover
+        opacity: 1
+        transform: scale(1.03)
+        .name
+          transition: all 0.2s 0.2s
+          transform: translateY(0)
+      &:active
+        transform: scale(0.97)
+    a
+      color: inherit
+      text-decoration: none
+    img
+      display: block
+      visibility: hidden
+      &.loaded
+        animation: fadeInRotateInY 1s
+        visibility: visible
+    .name
+      background: rgba(0,0,0,0.5)
+      bottom: 0
+      color: white
+      display: block
+      font-weight: bold
+      left: 0
+      padding: 0.5em 0
+      position: absolute
+      right: 0
+      text-shadow: 0 0 1px black
+      transition: all 0.2s
+      transform: translateY(100%)
+    button
+      background: none
+      border: none
+      color: inherit
+      cursor: pointer
+      font-family: inherit
+      font-size: inherit
+      outline: none
+      padding: 0
+      &:hover
+        color: white
+    p
+      padding: 0 10px
+      text-align: right
+  .cards
+    flex: 1 1 auto
+    overflow: auto
+    text-align: center
+    transition: background-image 0.2s
+    h1
+      margin-top: 2em
+      margin-bottom: 0
+    img
+      display: block
+      pointer-events: none
+    li
+      cursor: pointer
+      display: block
+      margin: 0
+      padding: 0
+      position: relative
+      transition: opacity 0.2s
+      z-index: 0
+    li:hover:before
+      bottom: 0
+      box-shadow: 0 0 12px 6px white
+      content: ''
+      left: 0
+      margin: 20px
+      margin-bottom: 23px
+      margin-top: 53px
+      position: absolute
+      right: 0
+      top: 0
+      z-index: -1
+    li:active
+      transform: scale(0.98)
+    li.unavailable
+      cursor: default
+      opacity: 0.5
+    li.unavailable:active
+      transform: none
+    ul
+      display: flex
+      flex-wrap: wrap
+      list-style-type: none
+      margin: 0
+      padding: 0
+
+  /* Deck View */
+  .deck
+    display: flex
+    flex: 0 0 auto
+    flex-direction: column
+    border-left: 1px solid rgba(255,255,255,0.15)
+    width: 240px
+    ul
+      flex: 1 1 auto
+      list-style-type: none
+      margin: 0
+      overflow: hidden
+      overflow-y: auto
+      padding: 0
+    li
+      animation: rotateIn 1s
+      background: #111
+      box-shadow: 0 0 0 1px black
+      box-sizing: border-box
+      color: base
+      display: block
+      line-height: 30px
+      margin: 0
+      position: relative
+      &.common
+        color: common
+      &.rare
+        color: rare
+      &.epic
+        color: epic
+      &.legendary
+        color: legendary
+      &:hover:after
+        background: rgba(255,255,255,0.1)
+        content: ''
+        height: 100%
+        left: 0
+        position: absolute
+        top: 0
+        width: 100%
+    .image
+      background-position: 50% 25%
+      box-sizing: border-box
+      position: absolute
+      left: 50%
+      height: 100%
+      top: 0
+      width: 50%
+      &:after
+        background-image: linear-gradient(90deg, #111, transparent)
+        content: ''
+        height: 100%
+        left: 0
+        position: absolute
+        top: 0
+        width: 100%
+    .content
+      display: flex
+      position: relative
+    .mana
+      background: #15a
+      box-sizing: border-box
+      color: white
+      flex: 0 0 auto
+      text-align: center
+      width: 30px
+    .name
+      flex: 1 1 auto
+      overflow: hidden
+      padding: 0 10px
+      text-overflow: ellipsis
+      white-space: nowrap
+    .count
+      background: #333
+      box-sizing: border-box
+      color: gold
+      flex: 0 0 auto
+      min-width: 30px
+      padding: 0 10px
+      text-align: center
+  .mana-curve
+    display: flex
+    flex: 0 0 auto
+    height: 60px
+    margin: 0
+    padding: 5px 10px 5px 9px
+    > div
+      flex: 1 1 auto
+      position: relative
+    .bar
+      background: #f90
+      bottom: 0
+      border-left: 1px solid black
+      box-sizing: border-box
+      position: absolute
+      left: 0
+      transition: height 0.4s
+      width: 100%
+
+/* Tooltip */
+#card-tooltip
+  position: absolute
+  width: 200px
+  height: 303px

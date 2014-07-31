@@ -1,0 +1,29 @@
+header.header
+  h1
+    a(href='..') Hearthstone Deck Builder
+    |  / 
+    | {{className | capitalize}}
+  p
+    input#builder-class-filter(type='radio', ng-model='search.hero', value='{{className}}')
+    label(for='builder-class-filter') {{className | capitalize}}
+    input#builder-neutral-filter(type='radio', ng-model='search.hero', value='neutral')
+    label(for='builder-neutral-filter') Neutral
+  p 
+    //-input#builder-hero-filter-all(type='radio', ng-model='search.hero', value='')
+    //-label(for='builder-hero-filter-all') All
+    span {{dustCost}} Dust
+    span {{count}} / 30 Cards
+    input#builder-arena-control(type='checkbox', ng-model='arenaDeck')
+    label(for='builder-arena-control') Arena Deck
+    input.search(type='text', placeholder='Search', ng-model='search.$')
+div.content.builder
+  section(ng-controller='CardsCtrl', class='cards gradient-{{arena.choice.cards[0].quality}}')
+    ul
+      li(ng-repeat='card in cards | filter:search | orderBy:["mana", "name"]', ng-class='{ unavailable: !arenaDeck && unavailable[{{card.id}}] }', ng-click='pick(card)')
+        img(height='303', width='200', ng-src='{{card.image_url}}')
+  section.deck(ng-controller='DeckCtrl')
+    ul
+      li(ng-repeat='entry in deck | orderBy:["card.mana", "card.name"]', ng-class='entry.card.quality', ng-click='remove(entry.card)', card-list-item, card='entry.card', count='entry.count')
+    figure.mana-curve
+      div(ng-repeat='mana in curve track by $index')
+        div.bar(style='height: {{mana * scale}}%;')

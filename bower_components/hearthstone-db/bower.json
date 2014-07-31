@@ -1,0 +1,23 @@
+{
+  "name": "hearthstone-db",
+  "version": "1.1.0",
+  "homepage": "https://github.com/pdyck/hearthstone-db",
+  "authors": [
+    "dev.pdyck@gmail.com"
+  ],
+  "description": "A collection of all Hearthstone cards in a JSON format for all purposes.",
+  "keywords": [
+    "hearthstone",
+    "cards",
+    "database",
+    "db"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

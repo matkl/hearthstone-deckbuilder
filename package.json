@@ -1,17 +1,16 @@
 {
-  "name": "deckbulder",
-  "version": "0.1.0",
+  "name": "hearthstone-deckbuilder",
+  "version": "0.2.0",
+  "description": "Hearthstone Deck Builder",
   "private": true,
-  "main": "app",
-  "scripts": {
-    "start": "node app.js"
-  },
-  "dependencies": {
-    "express": "~3.5.1",
-    "jade": "~1.3.1",
-    "stylus": "~0.43.1",
-    "hearthstone-card-repo": "~0.5.0",
-    "nib": "~1.0.2",
-    "request": "~2.34.0"
+  "devDependencies": {
+    "connect-modrewrite": "^0.7.6",
+    "grunt": "^0.4.5",
+    "grunt-contrib-connect": "^0.8.0",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-jade": "^0.12.0",
+    "grunt-contrib-stylus": "^0.18.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "nib": "^1.0.3"
   }
 }
