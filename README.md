@@ -9,9 +9,9 @@ A deck builder web application for Blizzard's Hearthstone. Built with AngularJS.
 
 Serve ``dist/`` from your web server.
 
-## Compilation
+## Building
 
-Only needed for development.
+Only needed for development:
 
 ```
 bower install
